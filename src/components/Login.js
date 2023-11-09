@@ -1,23 +1,114 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
-import { checkValidate } from "../utils/validate";
+import { checkValidate, checkValidate2 } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [IsSignInForm, SetSignInForm] = useState(true);
-  const [errorMessage,setErrorMessage]=useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [isButtonDisabled, setButtonDisabled] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const email = useRef(null);
   const password = useRef(null);
-  const fullName=useRef(null);
+  const fullName = useRef(null);
+  const handelButtonClick = (e) => {
+    //sign in signup logic
+    e.preventDefault();
+
+    if (!IsSignInForm) {
+      const message = checkValidate2(
+        email.current.value,
+        password.current.value,
+        fullName.current.value
+      );
+      setErrorMessage(message);
+      if (message) {
+        setButtonDisabled(!false);
+      }
+    } else {
+      const message = checkValidate(
+        email.current.value,
+        password.current.value
+      );
+      setErrorMessage(message);
+    }
+
+    if (!IsSignInForm) {
+      //* sign up logic
+
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+
+          updateProfile(user, {
+            displayName: fullName.current.value,
+            photoURL: "https://avatars.githubusercontent.com/u/106928567?v=4",
+          })
+            .then(() => {
+              // Profile updated!
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              setErrorMessage(error.message);
+            });
+
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    } else {
+      //* sign In logic
+
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+          navigate("/browse");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    }
+  };
 
   const toggleSignInForm = () => {
     SetSignInForm(!IsSignInForm);
-  };
-
-  const handelButtonClick = () => {
-    //validate the form data
-    const Message= checkValidate(email.current.value, password.current.value,fullName.current.value);
-    setErrorMessage(Message);
   };
 
   return (
@@ -60,12 +151,15 @@ const Login = () => {
           placeholder="Password"
           className="p-4 my-4 w-full text-base font-sans font-normal bg-[#333333] rounded-lg"
         />
-          
-        <p className="text-red-500 font-semibold text-lg py-4">{errorMessage}</p>
+
+        <p className="text-red-500 font-semibold text-lg py-4">
+          {errorMessage}
+        </p>
 
         <button
           className="p-4 my-6 bg-[#e50914] w-full text-base font-sans font-medium rounded-lg cursor-pointer"
           onClick={handelButtonClick}
+          disabled={isButtonDisabled}
         >
           {IsSignInForm ? "Sign In" : "Sign Up"}
         </button>
