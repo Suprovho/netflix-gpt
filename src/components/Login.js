@@ -19,7 +19,7 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const fullName = useRef(null);
-  
+
   const handelButtonClick = (e) => {
     //sign in signup logic
     e.preventDefault();
@@ -39,10 +39,10 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-        
+
           updateProfile(user, {
             displayName: fullName.current.value,
-            photoURL:USER_AVATAR,
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               // Profile updated!
@@ -77,7 +77,6 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -97,10 +96,7 @@ const Login = () => {
       <Header />
 
       <div className="absolute">
-        <img
-          src={LOGIN_BG}
-          alt="bg-login"
-        />
+        <img src={LOGIN_BG} alt="bg-login" />
       </div>
 
       <form

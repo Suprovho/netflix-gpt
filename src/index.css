@@ -10,3 +10,27 @@
 ::-webkit-scrollbar{
     display: none;
 }
+
+.dropDownProfile{
+    position: absolute;
+    top: 5.5rem;
+    right: 4rem;
+    width: 12rem;
+    padding: 15px;
+    border: 2px solid #282828;
+    color: white;
+    background: #020202;
+}
+
+.dropDownProfile::before{
+    content:'';
+    position: absolute;
+    top: -0.4rem;
+    right: 1.1rem;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    background-color: black;
+    border-left: 2px solid #282828;
+    border-top: 2px solid #282828;
+}
