@@ -54,7 +54,7 @@ const Header = () => {
   }, []);
 
   const changeBackground = () => {
-    if (window.scrollY >= 5) {
+    if (window.scrollY >= 20) {
       setNavBar(true);
     } else {
       setNavBar(false);
@@ -79,8 +79,8 @@ const Header = () => {
     <div
       className={
         navbar
-          ? "px-8 py-2  flex justify-between fixed  w-screen z-[100] bg-gray-950 h-20 items-center"
-          : "px-8 py-2 bg-gradient-to-b from-black flex justify-between fixed  w-screen z-[100] items-center h-20"
+          ? "px-8 py-2  flex justify-between fixed bg-fixed  w-screen z-[100] bg-gray-950 h-20 items-center scroll-smooth top-0"
+          : "px-8 py-2  bg-gradient-to-b from-black flex justify-between absolute items-center w-screen z-[100] scroll-smooth scroll-m-0"
       }
     >
       <img className="w-40 h-20" src={LOGO} alt="nav-logo" />

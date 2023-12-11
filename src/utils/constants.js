@@ -9,7 +9,7 @@ export const LOGIN_BG="https://assets.nflxext.com/ffe/siteui/vlv3/dace47b4-a5cb-
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMmM4ZGM2YzljOGU1OWM4YjE0M2ZiNDNlZDgzNDE0MiIsInN1YiI6IjY1NTM1MGFlZWE4NGM3MTA5M2ZmYTM3ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.aTUi5yR_Zx8gieAHPHugOYZp94C1b9hUwwKriA3RK-g'
+      Authorization: "Bearer "+ process.env.REACT_APP_TMDB_KEY,
     }
   };
 
@@ -21,3 +21,4 @@ export const LOGIN_BG="https://assets.nflxext.com/ffe/siteui/vlv3/dace47b4-a5cb-
     { identifier: "spanish", name: "Spanish" },
   ];
 
+  export const OPEN_AI_KEY=process.env.REACT_APP_OPEN_AI_KEY;

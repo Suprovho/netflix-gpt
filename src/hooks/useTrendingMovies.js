@@ -1,12 +1,14 @@
 import { useEffect } from "react";
-import {addUpcomingMovies } from "../utils/movieSlice";
+import {addTrendingMovies} from "../utils/movieSlice";
 import { API_OPTIONS } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const useTrendingMovies= () => {
   // * fetch data from TMDB API and update store
 
   const dispatch = useDispatch();
+
+  const TrendingMovies=useSelector((store)=>store.movies.TrendingMovies);
 
   const getTrendingMovies = async () => {
     const data = await fetch(
@@ -16,11 +18,11 @@ const useTrendingMovies= () => {
 
     const json = await data.json();
     
-    dispatch(addUpcomingMovies(json.results));
+    dispatch(addTrendingMovies(json.results));
   };
 
   useEffect(() => {
-    getTrendingMovies();
+   !TrendingMovies && getTrendingMovies();
   }, []);
 };
 
