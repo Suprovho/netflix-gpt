@@ -1,7 +1,7 @@
 # Netflix GPT Project 
 
 [![GitHub Repository](https://img.shields.io/badge/GitHub%20Repo-Netflix%20GPT-green)](https://github.com/Suprovho/netflix-gpt)
-[![Firebase Deployment](https://img.shields.io/badge/Live-Demo)](https://netflixgpt-a347f.web.app/browse)
+[![Vercel Deployment](https://img.shields.io/badge/Live-Demo)](https://netflixgpt-sds.vercel.app/)
 
 [![React](https://img.shields.io/badge/React-Frontend-blue)](https://reactjs.org/)
 [![TMDB](https://img.shields.io/badge/TMDB-Movie%20Data-blue)](https://www.themoviedb.org/)
@@ -25,7 +25,7 @@ Netflix GPT offers a seamless movie browsing experience with the following featu
 
 ## Usage
 
-1. Explore the live demo of Netflix GPT [here](https://netflixgpt-a347f.web.app/browse).
+1. Explore the live demo of Netflix GPT [here](https://netflixgpt-sds.vercel.app/).
 
 2. Sign in using Firebase authentication to unlock personalized features.
 
