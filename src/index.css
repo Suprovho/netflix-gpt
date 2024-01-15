@@ -5,21 +5,25 @@
 *{
     font-weight: 400;
     font-size: 1rem;
+    box-sizing: border-box;
 }
 
 ::-webkit-scrollbar{
     display: none;
 }
 
+
+
 .dropDownProfile{
     position: absolute;
     top: 5.5rem;
     right: 4rem;
-    width: 12rem;
-    padding: 15px;
-    border: 2px solid #282828;
+    width: 10rem;
+    padding: 25px;
+    border: black;
     color: white;
-    background: #020202;
+    background: #111111;
+    border-radius: 10px;
 }
 
 .dropDownProfile::before{
@@ -30,7 +34,12 @@
     width: 10px;
     height: 10px;
     transform: rotate(45deg);
-    background-color: black;
-    border-left: 2px solid #282828;
-    border-top: 2px solid #282828;
+    background: black;
+    border-left:2px solid black;
+    border-top: 2px solid black;
 }
+
+
+
+
+

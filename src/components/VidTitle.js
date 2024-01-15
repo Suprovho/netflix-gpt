@@ -2,11 +2,11 @@ import React from "react";
 
 const VidTitle = ({ title, overview }) => {
   return (
-    <div className="w-screen aspect-video pt-[20%] px-12 absolute text-white bg-gradient-to-r from-black">
-      <h1 className="font-bold text-4xl">{title}</h1>
-      <p className="text-base py-6 font-normal w-1/4">{overview}</p>
+    <div className="w-screen aspect-video md:pt-[20%] pt-[4%] md:px-12 px-2 absolute md:text-white  bg-gradient-to-r from-black">
+      <h1 className="font-bold md:text-4xl text-2xl text-white">{title}</h1>
+      <p className="md:text-base text-xs md:py-6 py-2 font-normal md:w-1/4 w-3/6 md:text-white text-white opacity-[0.3] hover:opacity-[1] md:visible md:opacity-100">{overview}</p>
       <div className="flex gap-3">
-        <button className="bg-white text-black pY-3 px-5 text-lg font-semibold  rounded-sm  flex items-center hover:bg-opacity-75">
+        <button className="bg-white text-black md:pY-3 md:px-5  md:text-lg text-base px-2 py-0 font-semibold   rounded-sm  flex items-center hover:bg-opacity-75 invisible md:visible">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="48"
@@ -20,7 +20,7 @@ const VidTitle = ({ title, overview }) => {
           Play
         </button>
 
-        <button className="bg-gray-400 text-white pY-3 px-5 text-lg bg-opacity-50 rounded-sm font-semibold  flex items-center gap-1 hover:bg-opacity-20">
+        <button className="bg-gray-400 text-white pY-3 px-5 text-lg bg-opacity-50 rounded-sm font-semibold  flex items-center gap-1 hover:bg-opacity-20 invisible md:visible ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"

@@ -21,7 +21,9 @@ const GptSearchBar = () => {
 
     const json = await data.json();
 
-    return json.results;
+     const finalResult = json.results.filter((result)=>result.poster_path!=null)
+
+    return finalResult;
   };
 
   const handelGptSearchClick = async () => {
@@ -32,7 +34,7 @@ const GptSearchBar = () => {
     const gptQuery =
       "Act as a Movie recommendation system and suggest some movies for the query :" +
       SearchText.current.value +
-      ". only give me names of 5 movies,comma separated like the example result given ahead.Example Result: Gadar,Sholay,Don,Golmaal,Koi Mil Gaya";
+      ". only give me names of 5 movies or series , comma separated like the example result given ahead.Example Result: Gadar,Sholay,Don,Golmaal,Koi Mil Gaya";
 
     const gptResults = await openai.chat.completions.create({
       messages: [{ role: "user", content: gptQuery }],
@@ -62,17 +64,17 @@ const GptSearchBar = () => {
   return (
     <div className="pt-[10%] flex justify-center">
       <form
-        className="w-[40%] h-auto bg-black grid grid-cols-12 rounded-lg"
+        className="w-full md:w-[40%]  h-auto md:bg-gradient-to-r from-gray-700 via-gray-900 to-black grid grid-cols-12  md:rounded-3xl bg-slate-950"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={SearchText}
           type="text"
-          className="p-2 m-4 col-span-9"
+          className="p-0 md:p-1 m-4 w-[95%] md:w-auto  col-span-9 outline-none md:rounded-xl rounded-sm placeholder:text-base"
           placeholder={lang[langKey].gptSearchPlaceholder}
         />
         <button
-          className="col-span-3 m-4 py-2 px-4 bg-red-500 text-white rounded-lg"
+          className="col-span-3 m-4 py-1 px-2 bg-gradient-to-r from-red-500 to-red-800 text-white rounded-md outline-none"
           onClick={handelGptSearchClick}
         >
           {lang[langKey].Search}
