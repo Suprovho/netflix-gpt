@@ -8,7 +8,7 @@
 [![Firebase](https://img.shields.io/badge/Firebase-Authentication%20%26%20Hosting-blue)](https://firebase.google.com/)
 [![OpenAI](https://img.shields.io/badge/OpenAI-Movie%20Recommendation-blue)](https://beta.openai.com/)
 
-🎬 Welcome to Netflix GPT, a Netflix clone that provides users with a familiar interface to browse movies. The application is integrated with TMDB to fetch movie details and with Firebase for authentication. Additionally, there's a section for specialized movie suggestions, where users can  get their personalized movie recommendations.
+🎬 Welcome to Netflix GPT, a Netflix inspired that provides users with a familiar interface to browse movies. The application is integrated with TMDB to fetch movie details and with Firebase for authentication. Additionally, there's a section for specialized movie suggestions, where users can  get their personalized movie recommendations.
 
 
 ## About This Project
@@ -21,7 +21,7 @@ Netflix GPT offers a seamless movie browsing experience with the following featu
 
 3. **Firebase Authentication**: Secure user authentication powered by Firebase.
 
-4. **OpenAI Movie Recommendations**: Enter your OpenAI key for personalized movie suggestions.
+4. **OpenAI Movie Recommendations**: OpenAI for personalized movie suggestions.
 
 ## Usage
 
